@@ -87,5 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias phplog="vim /var/log/apache2/error.log"
 alias syslog="sudo vim /var/log/syslog"
 alias www="cd /var/www/drupal"
