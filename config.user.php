@@ -68,6 +68,46 @@
 	},
 
 	"files": {
+		"syslog": {
+			"display" : "Drupal",
+			"path"    : "\/var\/log\/syslog", //set your Drupal syslog file path
+			"refresh" : 5,
+			"max"     : 10,
+			"notify"  : true,
+            "order"     : -1,//set order you want
+            "sort"      : "Date",
+            "thinit" : [ "Date", "Site", "Type", "Request", "Referer", "UID", "Message" ],
+			"format"  : {
+				"regex"        : "|^.*drupal: (.*)\\|(.*)\\|(.*)\\|(.*)\\|(.*)\\|(.*)\\|(.*)\\|(.*)\\|(.*)$|U",
+				"export_title" : "Drupal",
+				"match"        : {
+                    "Site"     : 1,
+                    "Date"     : {
+                      "U" : 2
+                    },
+                    "Type"     : 3,
+                    "IP"       : 4,
+                    "Request"  : 5,
+                    "Referer"  : 6,
+                    "UID"      : 7,
+                    "Link"     : 8,
+                    "Message"  : 9
+				},
+				"types": {
+					"Site"     : "link",
+                    "Date"     : "date:Y-m-d H:i:s",
+                    "Type"     : "txt",
+                    "IP"       : "ip:http",
+                    "Request"  : "txt",
+                    "Referer"  : "link",
+                    "UID"      : "txt",
+                    "Link"     : "link",
+                    "Message"  : "pre"
+                },
+				"exclude": {
+				}
+			}
+		},
 		"apache1": {
 			"display" : "Apache Error #1",
 			"path"    : "\/var\/log\/apache2\/error.log",
